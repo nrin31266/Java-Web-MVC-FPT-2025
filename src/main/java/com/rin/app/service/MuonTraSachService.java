@@ -84,8 +84,8 @@ public class MuonTraSachService {
                 Join<MuonTraSach, Sach> joinKhachHang = root.join("sach");
                 predicates.add(criteriaBuilder.like(joinKhachHang.get("tenSach"), "%"+tenSach+"%"));
             }
-            if(ngayMuon != null) {
-                predicates.add(criteriaBuilder.localDate().in(root.get("ngayMuon"), ngayMuon));
+            if (ngayMuon != null) {
+                predicates.add(criteriaBuilder.equal(root.get("ngayMuon"), ngayMuon));
             }
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };
